@@ -11,27 +11,28 @@ const taskRouter = require('./routers/task')
 const app = express()
 const port = process.env.PORT || 3000
 
+ 
+
+//app.use((req, res, next) => {
+//   res.status(503).send('Site is currently down! Check back soon!')
+// })
+
 app.use(express.json())
 app.use(userRouter)
 app.use(taskRouter)
-
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
 
-const bcrypt = require('bcrypt')
+// const main = async () => {
+    // const task = await Task.findById('636f78b5a7b5453cf94c30af')
+    // await task.populate('owner')
+    // console.log(task.owner)
 
-const myFunction = async () => {
-    const password = 'Red12345!'
-    const hashedPassword = await bcrypt.hash(password, 8)
+//   const user = await User.findById('636f71b9a5ca95610d4e86b9')
+//    await user.populate('tasks') 
+//    console.log(user.tasks)
+//}
 
-    console.log(password)
-    console.log(hashedPassword)
-
-    const isMatch = await bcrypt.compare('red12345!', hashedPassword)
-    console.log(isMatch)
-
-}
-
-myFunction()
+//main()
